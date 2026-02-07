@@ -1,0 +1,39 @@
+{
+  "gameName": "Tarot Battlegrounds",
+  "tribes": {
+    "Pentacles": {
+      "name": "Pentacles",
+      "description": "Earth/Economy - Gold bonuses",
+      "color": "#d4a017"
+    },
+    "Cups": {
+      "name": "Cups",
+      "description": "Water/Healing - Restoration effects",
+      "color": "#4fc3f7"
+    },
+    "Swords": {
+      "name": "Swords",
+      "description": "Air/Aggro - Damage bonuses",
+      "color": "#ef5350"
+    },
+    "Wands": {
+      "name": "Wands",
+      "description": "Fire/Buffs - Stat increases",
+      "color": "#ff9800"
+    }
+  },
+  "colors": {
+    "primary": "#7c3aed",
+    "secondary": "#1e1b4b",
+    "accent": "#f59e0b",
+    "positive": "#22c55e",
+    "negative": "#ef4444"
+  },
+  "uiText": {
+    "shopTitle": "Shop",
+    "handTitle": "Hand",
+    "boardTitle": "Board",
+    "buyButton": "Buy",
+    "sellButton": "Sell"
+  }
+}

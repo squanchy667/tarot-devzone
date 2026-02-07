@@ -1,0 +1,158 @@
+[
+  {
+    "tribeType": "Pentacles",
+    "tribeName": "Pentacles",
+    "description": "Earth/Economy theme - gold bonuses",
+    "themeColor": "#d4a017",
+    "tiers": [
+      {
+        "threshold": 2,
+        "trigger": "OnSell",
+        "effect": "BonusGold",
+        "target": "Self",
+        "value": 1,
+        "description": "(2) +1 gold when selling Pentacles cards"
+      },
+      {
+        "threshold": 4,
+        "trigger": "OnSell",
+        "effect": "BonusGold",
+        "target": "Self",
+        "value": 2,
+        "description": "(4) +2 gold when selling Pentacles cards"
+      },
+      {
+        "threshold": 6,
+        "trigger": "Passive",
+        "effect": "ReduceCost",
+        "target": "AllTribeMembers",
+        "value": 1,
+        "description": "(6) Pentacles cards cost 1 less to buy"
+      }
+    ],
+    "combo": {
+      "tribe": "Cups",
+      "threshold": 2,
+      "effect": "BonusGold",
+      "value": 1,
+      "description": "Pentacles + Cups (2 each): +1 gold at end of turn"
+    }
+  },
+  {
+    "tribeType": "Cups",
+    "tribeName": "Cups",
+    "description": "Water/Healing theme - restoration effects",
+    "themeColor": "#4fc3f7",
+    "tiers": [
+      {
+        "threshold": 2,
+        "trigger": "EndOfTurn",
+        "effect": "HealFlat",
+        "target": "Adjacent",
+        "value": 1,
+        "description": "(2) Heal adjacent cards for 1 at end of turn"
+      },
+      {
+        "threshold": 4,
+        "trigger": "EndOfTurn",
+        "effect": "HealFlat",
+        "target": "AllTribeMembers",
+        "value": 2,
+        "description": "(4) Heal all Cups for 2 at end of turn"
+      },
+      {
+        "threshold": 6,
+        "trigger": "StartOfCombat",
+        "effect": "Shield",
+        "target": "AllFriendly",
+        "value": 1,
+        "description": "(6) All friendly cards gain Aegis at start of combat"
+      }
+    ],
+    "combo": {
+      "tribe": "Wands",
+      "threshold": 2,
+      "effect": "BuffAttack",
+      "value": 1,
+      "description": "Cups + Wands (2 each): Healing also grants +1 attack"
+    }
+  },
+  {
+    "tribeType": "Swords",
+    "tribeName": "Swords",
+    "description": "Air/Aggro theme - damage bonuses",
+    "themeColor": "#ef5350",
+    "tiers": [
+      {
+        "threshold": 2,
+        "trigger": "StartOfCombat",
+        "effect": "BuffAttack",
+        "target": "AllTribeMembers",
+        "value": 1,
+        "description": "(2) Swords cards gain +1 attack at start of combat"
+      },
+      {
+        "threshold": 4,
+        "trigger": "StartOfCombat",
+        "effect": "BonusDamage",
+        "target": "AllTribeMembers",
+        "value": 2,
+        "description": "(4) Swords cards deal +2 bonus damage"
+      },
+      {
+        "threshold": 6,
+        "trigger": "Passive",
+        "effect": "Cleave",
+        "target": "AllTribeMembers",
+        "value": 1,
+        "description": "(6) Swords attacks hit adjacent enemies"
+      }
+    ],
+    "combo": {
+      "tribe": "Pentacles",
+      "threshold": 2,
+      "effect": "BonusGold",
+      "value": 1,
+      "description": "Swords + Pentacles (2 each): Killing enemies grants +1 gold"
+    }
+  },
+  {
+    "tribeType": "Wands",
+    "tribeName": "Wands",
+    "description": "Fire/Buff theme - stat increases",
+    "themeColor": "#ff9800",
+    "tiers": [
+      {
+        "threshold": 2,
+        "trigger": "EndOfTurn",
+        "effect": "BuffStats",
+        "target": "Random",
+        "value": 1,
+        "description": "(2) Give a random friendly +1/+1 at end of turn"
+      },
+      {
+        "threshold": 4,
+        "trigger": "EndOfTurn",
+        "effect": "BuffStats",
+        "target": "AllTribeMembers",
+        "value": 1,
+        "description": "(4) Give all Wands +1/+1 at end of turn"
+      },
+      {
+        "threshold": 6,
+        "trigger": "StartOfCombat",
+        "effect": "BuffAttack",
+        "target": "AllFriendly",
+        "value": 2,
+        "description": "(6) All friendly cards gain +2 attack at start of combat"
+      }
+    ],
+    "combo": {
+      "tribe": "Swords",
+      "threshold": 2,
+      "effect": "BuffAttack",
+      "value": 1,
+      "description": "Wands + Swords (2 each): Attack buffs are doubled"
+    }
+  }
+]

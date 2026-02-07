@@ -1,0 +1,548 @@
+[
+  {
+    "id": "coin-apprentice",
+    "cardName": "Coin Apprentice",
+    "tier": 1,
+    "attack": 1,
+    "health": 2,
+    "tribes": [
+      "Pentacles"
+    ],
+    "imageUrl": "",
+    "ability": "A young merchant learning the trade.",
+    "abilityTrigger": "None",
+    "abilityEffect": "None",
+    "abilityValue": 0,
+    "effectType": "NoEffect",
+    "buyCostModifier": 0,
+    "sellValueModifier": 0
+  },
+  {
+    "id": "spring-sprite",
+    "cardName": "Spring Sprite",
+    "tier": 1,
+    "attack": 1,
+    "health": 3,
+    "tribes": [
+      "Cups"
+    ],
+    "imageUrl": "",
+    "ability": "A tiny water spirit.",
+    "abilityTrigger": "None",
+    "abilityEffect": "None",
+    "abilityValue": 0,
+    "effectType": "NoEffect",
+    "buyCostModifier": 0,
+    "sellValueModifier": 0
+  },
+  {
+    "id": "dagger-initiate",
+    "cardName": "Dagger Initiate",
+    "tier": 1,
+    "attack": 2,
+    "health": 1,
+    "tribes": [
+      "Swords"
+    ],
+    "imageUrl": "",
+    "ability": "Quick but fragile.",
+    "abilityTrigger": "None",
+    "abilityEffect": "None",
+    "abilityValue": 0,
+    "effectType": "NoEffect",
+    "buyCostModifier": 0,
+    "sellValueModifier": 0
+  },
+  {
+    "id": "spark-wisp",
+    "cardName": "Spark Wisp",
+    "tier": 1,
+    "attack": 2,
+    "health": 2,
+    "tribes": [
+      "Wands"
+    ],
+    "imageUrl": "",
+    "ability": "A floating ember.",
+    "abilityTrigger": "None",
+    "abilityEffect": "None",
+    "abilityValue": 0,
+    "effectType": "NoEffect",
+    "buyCostModifier": 0,
+    "sellValueModifier": 0
+  },
+  {
+    "id": "tarot-seeker",
+    "cardName": "Tarot Seeker",
+    "tier": 1,
+    "attack": 1,
+    "health": 2,
+    "tribes": [
+      "Pentacles",
+      "Cups"
+    ],
+    "imageUrl": "",
+    "ability": "Seeks knowledge of the cards. (Dual tribe)",
+    "abilityTrigger": "None",
+    "abilityEffect": "None",
+    "abilityValue": 0,
+    "effectType": "NoEffect",
+    "buyCostModifier": 0,
+    "sellValueModifier": 0
+  },
+  {
+    "id": "gold-collector",
+    "cardName": "Gold Collector",
+    "tier": 2,
+    "attack": 2,
+    "health": 3,
+    "tribes": [
+      "Pentacles"
+    ],
+    "imageUrl": "",
+    "ability": "Battlecry: Gain 1 gold.",
+    "abilityTrigger": "Battlecry",
+    "abilityEffect": "GainCoins",
+    "abilityValue": 1,
+    "effectType": "NoEffect",
+    "buyCostModifier": 0,
+    "sellValueModifier": 0
+  },
+  {
+    "id": "healing-wave",
+    "cardName": "Healing Wave",
+    "tier": 2,
+    "attack": 1,
+    "health": 4,
+    "tribes": [
+      "Cups"
+    ],
+    "imageUrl": "",
+    "ability": "Battlecry: Gain Aegis.",
+    "abilityTrigger": "Battlecry",
+    "abilityEffect": "GainAegis",
+    "abilityValue": 1,
+    "effectType": "NoEffect",
+    "buyCostModifier": 0,
+    "sellValueModifier": 0
+  },
+  {
+    "id": "blade-squire",
+    "cardName": "Blade Squire",
+    "tier": 2,
+    "attack": 3,
+    "health": 2,
+    "tribes": [
+      "Swords"
+    ],
+    "imageUrl": "",
+    "ability": "OnAttack: Deal 1 extra damage.",
+    "abilityTrigger": "OnAttack",
+    "abilityEffect": "OnAttackBonusDamage",
+    "abilityValue": 1,
+    "effectType": "NoEffect",
+    "buyCostModifier": 0,
+    "sellValueModifier": 0
+  },
+  {
+    "id": "flame-enchanter",
+    "cardName": "Flame Enchanter",
+    "tier": 2,
+    "attack": 2,
+    "health": 3,
+    "tribes": [
+      "Wands"
+    ],
+    "imageUrl": "",
+    "ability": "Battlecry: Give adjacent minions +1 Attack.",
+    "abilityTrigger": "Battlecry",
+    "abilityEffect": "BuffAdjacentAttack",
+    "abilityValue": 1,
+    "effectType": "NoEffect",
+    "buyCostModifier": 0,
+    "sellValueModifier": 0
+  },
+  {
+    "id": "river-guard",
+    "cardName": "River Guard",
+    "tier": 2,
+    "attack": 2,
+    "health": 4,
+    "tribes": [
+      "Cups"
+    ],
+    "imageUrl": "",
+    "ability": "Guardian - Must be attacked first.",
+    "abilityTrigger": "None",
+    "abilityEffect": "Taunt",
+    "abilityValue": 0,
+    "effectType": "Guardian",
+    "buyCostModifier": 0,
+    "sellValueModifier": 0
+  },
+  {
+    "id": "treasure-master",
+    "cardName": "Treasure Master",
+    "tier": 3,
+    "attack": 3,
+    "health": 4,
+    "tribes": [
+      "Pentacles"
+    ],
+    "imageUrl": "",
+    "ability": "Deathrattle: Give a random friendly minion +2/+2.",
+    "abilityTrigger": "Deathrattle",
+    "abilityEffect": "DeathrattleBuffRandomFriendly",
+    "abilityValue": 2,
+    "effectType": "NoEffect",
+    "buyCostModifier": 0,
+    "sellValueModifier": 0
+  },
+  {
+    "id": "tidal-priest",
+    "cardName": "Tidal Priest",
+    "tier": 3,
+    "attack": 2,
+    "health": 5,
+    "tribes": [
+      "Cups"
+    ],
+    "imageUrl": "",
+    "ability": "Battlecry: Gain Aegis.",
+    "abilityTrigger": "Battlecry",
+    "abilityEffect": "GainAegis",
+    "abilityValue": 1,
+    "effectType": "NoEffect",
+    "buyCostModifier": 0,
+    "sellValueModifier": 0
+  },
+  {
+    "id": "sword-captain",
+    "cardName": "Sword Captain",
+    "tier": 3,
+    "attack": 4,
+    "health": 3,
+    "tribes": [
+      "Swords"
+    ],
+    "imageUrl": "",
+    "ability": "Battlecry: Give all friendly minions +1 Attack.",
+    "abilityTrigger": "Battlecry",
+    "abilityEffect": "BuffAllFriendlyAttack",
+    "abilityValue": 1,
+    "effectType": "NoEffect",
+    "buyCostModifier": 0,
+    "sellValueModifier": 0
+  },
+  {
+    "id": "inferno-mage",
+    "cardName": "Inferno Mage",
+    "tier": 3,
+    "attack": 3,
+    "health": 4,
+    "tribes": [
+      "Wands"
+    ],
+    "imageUrl": "",
+    "ability": "Deathrattle: Deal 2 damage to all enemies.",
+    "abilityTrigger": "Deathrattle",
+    "abilityEffect": "DeathrattleDamageAllEnemies",
+    "abilityValue": 2,
+    "effectType": "NoEffect",
+    "buyCostModifier": 0,
+    "sellValueModifier": 0
+  },
+  {
+    "id": "mercenary",
+    "cardName": "Mercenary",
+    "tier": 3,
+    "attack": 4,
+    "health": 4,
+    "tribes": [
+      "Swords",
+      "Pentacles"
+    ],
+    "imageUrl": "",
+    "ability": "OnAttack: Gain +1 Attack. (Dual tribe)",
+    "abilityTrigger": "OnAttack",
+    "abilityEffect": "OnAttackBuffSelf",
+    "abilityValue": 1,
+    "effectType": "NoEffect",
+    "buyCostModifier": 0,
+    "sellValueModifier": 0
+  },
+  {
+    "id": "wealthy-baron",
+    "cardName": "Wealthy Baron",
+    "tier": 4,
+    "attack": 3,
+    "health": 5,
+    "tribes": [
+      "Pentacles"
+    ],
+    "imageUrl": "",
+    "ability": "Battlecry: Gain 2 gold.",
+    "abilityTrigger": "Battlecry",
+    "abilityEffect": "GainCoins",
+    "abilityValue": 2,
+    "effectType": "NoEffect",
+    "buyCostModifier": 0,
+    "sellValueModifier": 0
+  },
+  {
+    "id": "ocean-guardian",
+    "cardName": "Ocean Guardian",
+    "tier": 4,
+    "attack": 3,
+    "health": 7,
+    "tribes": [
+      "Cups"
+    ],
+    "imageUrl": "",
+    "ability": "Guardian - Must be attacked first.",
+    "abilityTrigger": "None",
+    "abilityEffect": "Taunt",
+    "abilityValue": 0,
+    "effectType": "Guardian",
+    "buyCostModifier": 0,
+    "sellValueModifier": 0
+  },
+  {
+    "id": "blade-master",
+    "cardName": "Blade Master",
+    "tier": 4,
+    "attack": 6,
+    "health": 4,
+    "tribes": [
+      "Swords"
+    ],
+    "imageUrl": "",
+    "ability": "OnAttack: Deal 2 damage to adjacent enemies.",
+    "abilityTrigger": "OnAttack",
+    "abilityEffect": "OnAttackCleave",
+    "abilityValue": 2,
+    "effectType": "NoEffect",
+    "buyCostModifier": 0,
+    "sellValueModifier": 0
+  },
+  {
+    "id": "phoenix-caller",
+    "cardName": "Phoenix Caller",
+    "tier": 4,
+    "attack": 4,
+    "health": 5,
+    "tribes": [
+      "Wands"
+    ],
+    "imageUrl": "",
+    "ability": "Deathrattle: Give a random friendly minion +3/+3.",
+    "abilityTrigger": "Deathrattle",
+    "abilityEffect": "DeathrattleBuffRandomFriendly",
+    "abilityValue": 3,
+    "effectType": "NoEffect",
+    "buyCostModifier": 0,
+    "sellValueModifier": 0
+  },
+  {
+    "id": "ember-healer",
+    "cardName": "Ember Healer",
+    "tier": 4,
+    "attack": 3,
+    "health": 6,
+    "tribes": [
+      "Cups",
+      "Wands"
+    ],
+    "imageUrl": "",
+    "ability": "Battlecry: Give adjacent minions +1/+1. (Dual tribe)",
+    "abilityTrigger": "Battlecry",
+    "abilityEffect": "BuffAdjacentStats",
+    "abilityValue": 1,
+    "effectType": "NoEffect",
+    "buyCostModifier": 0,
+    "sellValueModifier": 0
+  },
+  {
+    "id": "dragon-hoarder",
+    "cardName": "Dragon Hoarder",
+    "tier": 5,
+    "attack": 5,
+    "health": 6,
+    "tribes": [
+      "Pentacles"
+    ],
+    "imageUrl": "",
+    "ability": "Battlecry: Gain 3 gold.",
+    "abilityTrigger": "Battlecry",
+    "abilityEffect": "GainCoins",
+    "abilityValue": 3,
+    "effectType": "NoEffect",
+    "buyCostModifier": 0,
+    "sellValueModifier": 0
+  },
+  {
+    "id": "tsunami-lord",
+    "cardName": "Tsunami Lord",
+    "tier": 5,
+    "attack": 4,
+    "health": 8,
+    "tribes": [
+      "Cups"
+    ],
+    "imageUrl": "",
+    "ability": "Battlecry: Gain Aegis. Guardian.",
+    "abilityTrigger": "Battlecry",
+    "abilityEffect": "GainAegis",
+    "abilityValue": 1,
+    "effectType": "Guardian",
+    "buyCostModifier": 0,
+    "sellValueModifier": 0
+  },
+  {
+    "id": "blade-storm",
+    "cardName": "Blade Storm",
+    "tier": 5,
+    "attack": 7,
+    "health": 5,
+    "tribes": [
+      "Swords"
+    ],
+    "imageUrl": "",
+    "ability": "OnAttack: Deal 2 extra damage.",
+    "abilityTrigger": "OnAttack",
+    "abilityEffect": "OnAttackBonusDamage",
+    "abilityValue": 2,
+    "effectType": "NoEffect",
+    "buyCostModifier": 0,
+    "sellValueModifier": 0
+  },
+  {
+    "id": "archmage",
+    "cardName": "Archmage",
+    "tier": 5,
+    "attack": 5,
+    "health": 6,
+    "tribes": [
+      "Wands"
+    ],
+    "imageUrl": "",
+    "ability": "Battlecry: Give all friendly minions +2 Attack.",
+    "abilityTrigger": "Battlecry",
+    "abilityEffect": "BuffAllFriendlyAttack",
+    "abilityValue": 2,
+    "effectType": "NoEffect",
+    "buyCostModifier": 0,
+    "sellValueModifier": 0
+  },
+  {
+    "id": "battle-mage",
+    "cardName": "Battle Mage",
+    "tier": 5,
+    "attack": 6,
+    "health": 6,
+    "tribes": [
+      "Wands",
+      "Swords"
+    ],
+    "imageUrl": "",
+    "ability": "OnAttack: Gain +2 Attack permanently. (Dual tribe)",
+    "abilityTrigger": "OnAttack",
+    "abilityEffect": "OnAttackBuffSelf",
+    "abilityValue": 2,
+    "effectType": "NoEffect",
+    "buyCostModifier": 0,
+    "sellValueModifier": 0
+  },
+  {
+    "id": "golden-emperor",
+    "cardName": "Golden Emperor",
+    "tier": 6,
+    "attack": 6,
+    "health": 8,
+    "tribes": [
+      "Pentacles"
+    ],
+    "imageUrl": "",
+    "ability": "Battlecry: Gain 4 gold.",
+    "abilityTrigger": "Battlecry",
+    "abilityEffect": "GainCoins",
+    "abilityValue": 4,
+    "effectType": "NoEffect",
+    "buyCostModifier": 0,
+    "sellValueModifier": 0
+  },
+  {
+    "id": "leviathan",
+    "cardName": "Leviathan",
+    "tier": 6,
+    "attack": 5,
+    "health": 12,
+    "tribes": [
+      "Cups"
+    ],
+    "imageUrl": "",
+    "ability": "Guardian - Massive health pool.",
+    "abilityTrigger": "None",
+    "abilityEffect": "Taunt",
+    "abilityValue": 0,
+    "effectType": "Guardian",
+    "buyCostModifier": 0,
+    "sellValueModifier": 0
+  },
+  {
+    "id": "doom-blade",
+    "cardName": "Doom Blade",
+    "tier": 6,
+    "attack": 10,
+    "health": 6,
+    "tribes": [
+      "Swords"
+    ],
+    "imageUrl": "",
+    "ability": "OnAttack: Deal 3 damage to adjacent enemies.",
+    "abilityTrigger": "OnAttack",
+    "abilityEffect": "OnAttackCleave",
+    "abilityValue": 3,
+    "effectType": "NoEffect",
+    "buyCostModifier": 0,
+    "sellValueModifier": 0
+  },
+  {
+    "id": "inferno-dragon",
+    "cardName": "Inferno Dragon",
+    "tier": 6,
+    "attack": 7,
+    "health": 7,
+    "tribes": [
+      "Wands"
+    ],
+    "imageUrl": "",
+    "ability": "Deathrattle: Deal 4 damage to all enemies.",
+    "abilityTrigger": "Deathrattle",
+    "abilityEffect": "DeathrattleDamageAllEnemies",
+    "abilityValue": 4,
+    "effectType": "NoEffect",
+    "buyCostModifier": 0,
+    "sellValueModifier": 0
+  },
+  {
+    "id": "arcane-trinity",
+    "cardName": "Arcane Trinity",
+    "tier": 6,
+    "attack": 6,
+    "health": 8,
+    "tribes": [
+      "Cups",
+      "Wands",
+      "Swords"
+    ],
+    "imageUrl": "",
+    "ability": "Battlecry: Give adjacent minions +2/+2. (Triple tribe)",
+    "abilityTrigger": "Battlecry",
+    "abilityEffect": "BuffAdjacentStats",
+    "abilityValue": 2,
+    "effectType": "NoEffect",
+    "buyCostModifier": 0,
+    "sellValueModifier": 0
+  }
+]

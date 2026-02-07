@@ -1,0 +1,34 @@
+{
+  "tierCopies": {
+    "1": 16,
+    "2": 15,
+    "3": 13,
+    "4": 11,
+    "5": 9,
+    "6": 7
+  },
+  "shopSizes": {
+    "1": 3,
+    "2": 4,
+    "3": 4,
+    "4": 5,
+    "5": 5,
+    "6": 6
+  },
+  "baseBuyCost": 3,
+  "goldenMultiplier": 2,
+  "recruitTimerSeconds": 35,
+  "startingGold": 3,
+  "goldPerTurnBase": 1,
+  "maxGold": 10,
+  "tavernUpgradeCosts": {
+    "2": 5,
+    "3": 8,
+    "4": 11,
+    "5": 11,
+    "6": 11
+  },
+  "startingHealth": 40,
+  "maxBoardSize": 7,
+  "maxHandSize": 10
+}

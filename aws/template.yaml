@@ -1,0 +1,136 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Tarot DevZone - Game Editor & Deploy Tool
+
+Parameters:
+  Environment:
+    Type: String
+    Default: prod
+  JwtSecret:
+    Type: String
+    NoEcho: true
+  GameDistributionId:
+    Type: String
+    Description: CloudFront distribution ID for game data
+    Default: none
+
+Globals:
+  Function:
+    Timeout: 30
+    MemorySize: 256
+    Runtime: nodejs20.x
+    Environment:
+      Variables:
+        NODE_ENV: production
+        JWT_SECRET: !Ref JwtSecret
+        S3_DATA_BUCKET: !Ref GameDataBucket
+        DYNAMODB_USERS_TABLE: !Ref UsersTable
+        DYNAMODB_VERSIONS_TABLE: !Ref VersionsTable
+        CLOUDFRONT_DATA_DISTRIBUTION_ID: !Ref GameDistributionId
+
+Resources:
+  GameDataBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub tarot-battlegrounds-data-${Environment}
+      CorsConfiguration:
+        CorsRules:
+          - AllowedHeaders: ['*']
+            AllowedMethods: [GET]
+            AllowedOrigins:
+              - 'https://dui22oafwco41.cloudfront.net'
+              - 'http://localhost:5173'
+            MaxAge: 3600
+
+  DevZoneFrontendBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub tarot-devzone-frontend-${Environment}
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: false
+        BlockPublicPolicy: false
+        IgnorePublicAcls: false
+        RestrictPublicBuckets: false
+      WebsiteConfiguration:
+        IndexDocument: index.html
+        ErrorDocument: index.html
+
+  DevZoneFrontendBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref DevZoneFrontendBucket
+      PolicyDocument:
+        Statement:
+          - Effect: Allow
+            Principal: '*'
+            Action: 's3:GetObject'
+            Resource: !Sub '${DevZoneFrontendBucket.Arn}/*'
+
+  UsersTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub devzone-users-${Environment}
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: userId
+          AttributeType: S
+      KeySchema:
+        - AttributeName: userId
+          KeyType: HASH
+
+  VersionsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub devzone-versions-${Environment}
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: versionId
+          AttributeType: S
+      KeySchema:
+        - AttributeName: versionId
+          KeyType: HASH
+
+  DevZoneApi:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: makefile
+    Properties:
+      FunctionName: !Sub tarot-devzone-api-${Environment}
+      Handler: dist/lambda.handler
+      CodeUri: ../
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref GameDataBucket
+        - DynamoDBCrudPolicy:
+            TableName: !Ref UsersTable
+        - DynamoDBCrudPolicy:
+            TableName: !Ref VersionsTable
+        - Statement:
+            - Effect: Allow
+              Action:
+                - cloudfront:CreateInvalidation
+                - cloudfront:GetInvalidation
+              Resource: '*'
+      Events:
+        ApiProxy:
+          Type: HttpApi
+          Properties:
+            Path: /api/{proxy+}
+            Method: ANY
+        ApiRoot:
+          Type: HttpApi
+          Properties:
+            Path: /api
+            Method: ANY
+
+Outputs:
+  ApiUrl:
+    Description: API Gateway endpoint URL
+    Value: !Sub https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com
+  GameDataBucket:
+    Value: !Ref GameDataBucket
+  DevZoneFrontendBucket:
+    Value: !Ref DevZoneFrontendBucket
+  FrontendUrl:
+    Description: DevZone frontend URL
+    Value: !Sub http://${DevZoneFrontendBucket}.s3-website-${AWS::Region}.amazonaws.com
