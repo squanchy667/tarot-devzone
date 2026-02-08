@@ -65,6 +65,8 @@ export interface TribeThemeData {
   name: string;
   description: string;
   color: string;
+  aliases?: string[];
+  iconUrl?: string;
 }
 
 export interface ThemeData {
@@ -76,6 +78,11 @@ export interface ThemeData {
     accent: string;
     positive: string;
     negative: string;
+    textColorLight?: string;
+    textColorDark?: string;
+    gameBackgroundColor?: string;
+    cardBackgroundColor?: string;
+    goldenCardColor?: string;
   };
   uiText: {
     shopTitle: string;
@@ -83,6 +90,40 @@ export interface ThemeData {
     boardTitle: string;
     buyButton: string;
     sellButton: string;
+    coinsLabel?: string;
+    healthLabel?: string;
+    tierLabel?: string;
+    playButton?: string;
+    rerollButton?: string;
+    upgradeButton?: string;
+    maxTierText?: string;
+    freezeButton?: string;
+    unfreezeButton?: string;
+    endTurnButton?: string;
+    combatPhaseTitle?: string;
+    recruitPhaseTitle?: string;
+    victoryText?: string;
+    defeatText?: string;
+    tieText?: string;
+    gameOverTitle?: string;
+    playAgainText?: string;
+    quitToMenuText?: string;
+  };
+  assets?: {
+    gameBackground?: string;
+    cardFrameCommon?: string;
+    cardFrameRare?: string;
+    cardFrameEpic?: string;
+    cardBack?: string;
+    panelBackground?: string;
+    buttonNormal?: string;
+    buttonHighlighted?: string;
+    buttonPressed?: string;
+    buttonDisabled?: string;
+    coinIcon?: string;
+    healthIcon?: string;
+    attackIcon?: string;
+    shieldIcon?: string;
   };
 }
 

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Save } from 'lucide-react';
+import ImageUploadField from '../common/ImageUploadField';
 
 const TRIBES = ['Pentacles', 'Cups', 'Swords', 'Wands'];
 const TRIGGERS = ['None', 'Battlecry', 'Deathrattle', 'OnAttack', 'OnDamaged', 'StartOfCombat', 'EndOfTurn'];
@@ -121,10 +122,7 @@ export default function CardForm({ card, onSave, saving }: Props) {
           <input type="number" value={form.sellValueModifier} onChange={e => set('sellValueModifier', Number(e.target.value))} min={-5} max={5} className={inputCls} />
         </div>
       </div>
-      <div>
-        <label className="block text-sm text-gray-400 mb-1">Image URL</label>
-        <input value={form.imageUrl} onChange={e => set('imageUrl', e.target.value)} placeholder="Upload or paste URL" className={inputCls} />
-      </div>
+      <ImageUploadField value={form.imageUrl} onChange={url => set('imageUrl', url)} label="Card Image" folder="images" />
       <button type="submit" disabled={saving}
         className="flex items-center gap-2 px-4 py-2 bg-brand-600 hover:bg-brand-700 rounded-lg font-medium transition-colors disabled:opacity-50">
         <Save size={16} /> {saving ? 'Saving...' : 'Save Card'}

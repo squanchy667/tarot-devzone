@@ -3,6 +3,8 @@ import { useMutation } from '@tanstack/react-query';
 import { api } from '../../services/api';
 import { Rocket, ExternalLink, CheckCircle, Loader } from 'lucide-react';
 
+const GAME_URL = import.meta.env.VITE_GAME_URL || 'https://dui22oafwco41.cloudfront.net';
+
 export default function DeployPanel() {
   const [lastDeploy, setLastDeploy] = useState<{ invalidationId: string; publishedAt: string } | null>(null);
   const [status, setStatus] = useState('');
@@ -47,7 +49,7 @@ export default function DeployPanel() {
       )}
       <div className="bg-gray-900 rounded-xl border border-gray-800 p-5">
         <h3 className="font-semibold mb-2">Live Game</h3>
-        <a href="https://dui22oafwco41.cloudfront.net" target="_blank" rel="noopener noreferrer"
+        <a href={GAME_URL} target="_blank" rel="noopener noreferrer"
           className="inline-flex items-center gap-1 text-brand-400 hover:text-brand-300 text-sm">
           Open Game <ExternalLink size={14} />
         </a>

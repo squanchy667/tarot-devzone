@@ -55,10 +55,11 @@ export const api = {
     request<any>(`/theme${source ? `?source=${source}` : ''}`),
   updateTheme: (theme: any) =>
     request<any>('/theme', { method: 'PUT', body: JSON.stringify(theme) }),
-  uploadImage: async (file: File, name?: string) => {
+  uploadImage: async (file: File, name?: string, folder?: string) => {
     const form = new FormData();
     form.append('image', file);
     if (name) form.append('name', name);
+    if (folder) form.append('folder', folder);
     const headers: Record<string, string> = {};
     if (authToken) headers['Authorization'] = `Bearer ${authToken}`;
     const res = await fetch(`${API_BASE}/images/upload`, { method: 'POST', headers, body: form });

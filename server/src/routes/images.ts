@@ -12,7 +12,9 @@ imagesRouter.post('/upload', upload.single('image'), async (req, res) => {
   try {
     if (!req.file) return res.status(400).json({ success: false, error: 'No file uploaded' });
     const name = req.body.name || req.file.originalname.replace(/[^a-z0-9.-]/gi, '-').toLowerCase();
-    const key = `live/images/${name}`;
+    const folder = req.body.folder || 'images';
+    const sanitizedFolder = folder.replace(/[^a-z0-9-]/gi, '-').toLowerCase();
+    const key = `live/${sanitizedFolder}/${name}`;
     const url = await s3.uploadBuffer(key, req.file.buffer, req.file.mimetype);
     res.json({ success: true, data: { url, key } });
   } catch (err: any) {
