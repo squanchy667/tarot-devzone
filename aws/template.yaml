@@ -33,6 +33,11 @@ Resources:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: !Sub tarot-battlegrounds-data-${Environment}
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: false
+        BlockPublicPolicy: false
+        IgnorePublicAcls: false
+        RestrictPublicBuckets: false
       CorsConfiguration:
         CorsRules:
           - AllowedHeaders: ['*']
@@ -41,6 +46,18 @@ Resources:
               - 'https://dui22oafwco41.cloudfront.net'
               - 'http://localhost:5173'
             MaxAge: 3600
+
+  GameDataBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref GameDataBucket
+      PolicyDocument:
+        Statement:
+          - Sid: PublicReadLive
+            Effect: Allow
+            Principal: '*'
+            Action: 's3:GetObject'
+            Resource: !Sub '${GameDataBucket.Arn}/live/*'
 
   DevZoneFrontendBucket:
     Type: AWS::S3::Bucket

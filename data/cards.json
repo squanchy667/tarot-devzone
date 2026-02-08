@@ -544,5 +544,95 @@
     "effectType": "NoEffect",
     "buyCostModifier": 0,
     "sellValueModifier": 0
+  },
+  {
+    "id": "spark-of-inspiration",
+    "cardName": "Spark of Inspiration",
+    "tier": 1,
+    "attack": 1,
+    "health": 2,
+    "tribes": [
+      "Wands"
+    ],
+    "imageUrl": "",
+    "ability": "Battlecry: Give adjacent minions +1 Attack.",
+    "abilityTrigger": "Battlecry",
+    "abilityEffect": "BuffAdjacentAttack",
+    "abilityValue": 1,
+    "effectType": "NoEffect",
+    "buyCostModifier": 0,
+    "sellValueModifier": 0
+  },
+  {
+    "id": "intuitive-novice",
+    "cardName": "Intuitive Novice",
+    "tier": 1,
+    "attack": 2,
+    "health": 2,
+    "tribes": [
+      "Cups"
+    ],
+    "imageUrl": "",
+    "ability": "Predicts and reduces incoming damage.",
+    "abilityTrigger": "None",
+    "abilityEffect": "None",
+    "abilityValue": 0,
+    "effectType": "Aegis",
+    "buyCostModifier": 0,
+    "sellValueModifier": 0
+  },
+  {
+    "id": "impulsive-apprentice",
+    "cardName": "Impulsive Apprentice",
+    "tier": 1,
+    "attack": 2,
+    "health": 1,
+    "tribes": [
+      "Wands"
+    ],
+    "imageUrl": "",
+    "ability": "Quick attack starter.",
+    "abilityTrigger": "None",
+    "abilityEffect": "None",
+    "abilityValue": 0,
+    "effectType": "NoEffect",
+    "buyCostModifier": 0,
+    "sellValueModifier": 0
+  },
+  {
+    "id": "flame-dancer",
+    "cardName": "Flame Dancer",
+    "tier": 2,
+    "attack": 3,
+    "health": 3,
+    "tribes": [
+      "Wands"
+    ],
+    "imageUrl": "",
+    "ability": "Battlecry: Give all friendly minions +1 Attack.",
+    "abilityTrigger": "Battlecry",
+    "abilityEffect": "BuffAllFriendlyAttack",
+    "abilityValue": 1,
+    "effectType": "NoEffect",
+    "buyCostModifier": 0,
+    "sellValueModifier": 0
+  },
+  {
+    "id": "blazing-knight",
+    "cardName": "Blazing Knight",
+    "tier": 3,
+    "attack": 4,
+    "health": 3,
+    "tribes": [
+      "Wands"
+    ],
+    "imageUrl": "",
+    "ability": "OnAttack: Gain +2 Attack.",
+    "abilityTrigger": "OnAttack",
+    "abilityEffect": "OnAttackBuffSelf",
+    "abilityValue": 2,
+    "effectType": "NoEffect",
+    "buyCostModifier": 0,
+    "sellValueModifier": 0
   }
 ]
