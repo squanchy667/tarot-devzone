@@ -4,6 +4,8 @@ export enum TribeType {
   Cups = 'Cups',
   Swords = 'Swords',
   Wands = 'Wands',
+  Stars = 'Stars',
+  Coins = 'Coins',
 }
 
 export enum AbilityTrigger {
@@ -14,10 +16,16 @@ export enum AbilityTrigger {
   OnDamaged = 'OnDamaged',
   StartOfCombat = 'StartOfCombat',
   EndOfTurn = 'EndOfTurn',
+  // Phase II (T101-T104)
+  OnAllyDeath = 'OnAllyDeath',
+  OnAllySummoned = 'OnAllySummoned',
+  OnSell = 'OnSell',
+  Aura = 'Aura',
 }
 
 export enum AbilityEffectType {
   None = 'None',
+  // Battlecry effects
   BuffAdjacentAttack = 'BuffAdjacentAttack',
   BuffAdjacentHealth = 'BuffAdjacentHealth',
   BuffAdjacentStats = 'BuffAdjacentStats',
@@ -25,13 +33,38 @@ export enum AbilityEffectType {
   BuffOtherFriendlyAttack = 'BuffOtherFriendlyAttack',
   GainAegis = 'GainAegis',
   GainCoins = 'GainCoins',
+  // Deathrattle effects
   DeathrattleBuffRandomFriendly = 'DeathrattleBuffRandomFriendly',
   DeathrattleDamageRandomEnemy = 'DeathrattleDamageRandomEnemy',
   DeathrattleDamageAllEnemies = 'DeathrattleDamageAllEnemies',
+  // OnAttack effects
   OnAttackBuffSelf = 'OnAttackBuffSelf',
   OnAttackBonusDamage = 'OnAttackBonusDamage',
   OnAttackCleave = 'OnAttackCleave',
+  // Passive
   Taunt = 'Taunt',
+  // Phase II (T101-T104): New trigger effects
+  OnAllyDeathBuffSelf = 'OnAllyDeathBuffSelf',
+  OnAllyDeathBuffRandom = 'OnAllyDeathBuffRandom',
+  OnAllySummonedBuffSummoned = 'OnAllySummonedBuffSummoned',
+  OnAllySummonedBuffSelf = 'OnAllySummonedBuffSelf',
+  OnSellGainCoins = 'OnSellGainCoins',
+  OnSellBuffAllRemaining = 'OnSellBuffAllRemaining',
+  AuraBuffTribematesAttack = 'AuraBuffTribematesAttack',
+  AuraBuffAdjacentStats = 'AuraBuffAdjacentStats',
+  AuraBuffAllFriendlyAttack = 'AuraBuffAllFriendlyAttack',
+  // Phase II (T105-T112): New ability effects
+  Reborn = 'Reborn',
+  Windfury = 'Windfury',
+  Venomous = 'Venomous',
+  SummonTokenOnDeath = 'SummonTokenOnDeath',
+  SummonTokenOnPlay = 'SummonTokenOnPlay',
+  StealBuffOnAttack = 'StealBuffOnAttack',
+  GainArmor = 'GainArmor',
+  BuffAllTribeOnPlay = 'BuffAllTribeOnPlay',
+  BuffAllTribeOnDeath = 'BuffAllTribeOnDeath',
+  RandomTransformOnDeath = 'RandomTransformOnDeath',
+  BuffSelfHealth = 'BuffSelfHealth',
 }
 
 export enum EffectType {

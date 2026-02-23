@@ -8,6 +8,8 @@ import { themeRouter } from './routes/theme';
 import { imagesRouter } from './routes/images';
 import { versionsRouter } from './routes/versions';
 import { deployRouter } from './routes/deploy';
+import { gameAuthRouter } from './routes/game-auth';
+import { matchmakingRouter } from './routes/matchmaking';
 
 export const app = express();
 
@@ -29,6 +31,8 @@ app.use('/api/theme', themeRouter);
 app.use('/api/images', imagesRouter);
 app.use('/api/versions', versionsRouter);
 app.use('/api/deploy', deployRouter);
+app.use('/api/game-auth', gameAuthRouter);
+app.use('/api/matchmaking', matchmakingRouter);
 
 app.use((err: Error, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
   console.error('[API Error]', err.message);

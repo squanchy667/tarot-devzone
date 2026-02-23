@@ -42,6 +42,8 @@ Globals:
         DYNAMODB_USERS_TABLE: !Ref UsersTable
         DYNAMODB_VERSIONS_TABLE: !Ref VersionsTable
         CLOUDFRONT_DATA_DISTRIBUTION_ID: !Ref GameDistributionId
+        DYNAMODB_PLAYERS_TABLE: !Ref PlayersTable
+        DYNAMODB_MATCHMAKING_TABLE: !Ref MatchmakingTable
 
 Resources:
   GameDataBucket:
@@ -130,6 +132,42 @@ Resources:
         - AttributeName: versionId
           KeyType: HASH
 
+  PlayersTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub game-players-${Environment}
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: playerId
+          AttributeType: S
+        - AttributeName: email
+          AttributeType: S
+      KeySchema:
+        - AttributeName: playerId
+          KeyType: HASH
+      GlobalSecondaryIndexes:
+        - IndexName: email-index
+          KeySchema:
+            - AttributeName: email
+              KeyType: HASH
+          Projection:
+            ProjectionType: ALL
+
+  MatchmakingTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub game-matchmaking-${Environment}
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: playerId
+          AttributeType: S
+      KeySchema:
+        - AttributeName: playerId
+          KeyType: HASH
+      TimeToLiveSpecification:
+        AttributeName: ttl
+        Enabled: true
+
   DevZoneApi:
     Type: AWS::Serverless::Function
     Metadata:
@@ -145,6 +183,10 @@ Resources:
             TableName: !Ref UsersTable
         - DynamoDBCrudPolicy:
             TableName: !Ref VersionsTable
+        - DynamoDBCrudPolicy:
+            TableName: !Ref PlayersTable
+        - DynamoDBCrudPolicy:
+            TableName: !Ref MatchmakingTable
         - Statement:
             - Effect: Allow
               Action:
