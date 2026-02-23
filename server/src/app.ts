@@ -10,6 +10,7 @@ import { versionsRouter } from './routes/versions';
 import { deployRouter } from './routes/deploy';
 import { gameAuthRouter } from './routes/game-auth';
 import { matchmakingRouter } from './routes/matchmaking';
+import { rankedRouter } from './routes/ranked';
 
 export const app = express();
 
@@ -33,6 +34,7 @@ app.use('/api/versions', versionsRouter);
 app.use('/api/deploy', deployRouter);
 app.use('/api/game-auth', gameAuthRouter);
 app.use('/api/matchmaking', matchmakingRouter);
+app.use('/api/ranked', rankedRouter);
 
 app.use((err: Error, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
   console.error('[API Error]', err.message);

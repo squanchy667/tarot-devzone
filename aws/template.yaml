@@ -44,6 +44,8 @@ Globals:
         CLOUDFRONT_DATA_DISTRIBUTION_ID: !Ref GameDistributionId
         DYNAMODB_PLAYERS_TABLE: !Ref PlayersTable
         DYNAMODB_MATCHMAKING_TABLE: !Ref MatchmakingTable
+        DYNAMODB_MATCH_HISTORY_TABLE: !Ref MatchHistoryTable
+        DYNAMODB_SEASONS_TABLE: !Ref SeasonsTable
 
 Resources:
   GameDataBucket:
@@ -168,6 +170,43 @@ Resources:
         AttributeName: ttl
         Enabled: true
 
+  MatchHistoryTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub game-match-history-${Environment}
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: matchId
+          AttributeType: S
+        - AttributeName: playerId
+          AttributeType: S
+        - AttributeName: timestamp
+          AttributeType: S
+      KeySchema:
+        - AttributeName: matchId
+          KeyType: HASH
+      GlobalSecondaryIndexes:
+        - IndexName: player-matches-index
+          KeySchema:
+            - AttributeName: playerId
+              KeyType: HASH
+            - AttributeName: timestamp
+              KeyType: RANGE
+          Projection:
+            ProjectionType: ALL
+
+  SeasonsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub game-seasons-${Environment}
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: seasonId
+          AttributeType: S
+      KeySchema:
+        - AttributeName: seasonId
+          KeyType: HASH
+
   DevZoneApi:
     Type: AWS::Serverless::Function
     Metadata:
@@ -187,6 +226,10 @@ Resources:
             TableName: !Ref PlayersTable
         - DynamoDBCrudPolicy:
             TableName: !Ref MatchmakingTable
+        - DynamoDBCrudPolicy:
+            TableName: !Ref MatchHistoryTable
+        - DynamoDBCrudPolicy:
+            TableName: !Ref SeasonsTable
         - Statement:
             - Effect: Allow
               Action:
