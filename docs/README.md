@@ -164,6 +164,17 @@ npx tsc --noEmit --project server/tsconfig.json
 npx tsc --noEmit --project client/tsconfig.json
 ```
 
+### Enum Parity Check
+
+The C# enums in the Unity project and the TS enums in `shared/enums.ts` must stay in sync (TribeType, AbilityTrigger, AbilityEffectType, SynergyTrigger, SynergyEffect, SynergyTarget). Verify with:
+
+```bash
+make check-parity
+# or: npx tsx scripts/check-enum-parity.ts
+```
+
+Set `UNITY_SRC` if the Unity checkout is not at `../TarotBattlegrounds-POC/TarotBattlegrounds-POC/Assets/Scripts`. Exits non-zero with a per-enum diff on drift.
+
 ### Environment Variables
 
 | Variable | Description | Default |

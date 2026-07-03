@@ -1,4 +1,9 @@
-.PHONY: build-DevZoneApi
+.PHONY: build-DevZoneApi check-parity
+
+# Verify C#/TS enum parity between the Unity game and shared/enums.ts
+# (override Unity path with UNITY_SRC=/path/to/Assets/Scripts)
+check-parity:
+	npx tsx scripts/check-enum-parity.ts
 
 build-DevZoneApi:
 	# Copy server dist to artifacts
