@@ -1,5 +1,5 @@
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
-import { DynamoDBDocumentClient, GetCommand, PutCommand, ScanCommand, UpdateCommand, DeleteCommand, QueryCommand } from '@aws-sdk/lib-dynamodb';
+import { DynamoDBDocumentClient, GetCommand, PutCommand, ScanCommand, UpdateCommand, DeleteCommand, QueryCommand, BatchWriteCommand } from '@aws-sdk/lib-dynamodb';
 
 const client = new DynamoDBClient({ region: process.env.AWS_REGION || 'us-east-1' });
 const ddb = DynamoDBDocumentClient.from(client);
@@ -8,6 +8,7 @@ const USERS_TABLE = process.env.DYNAMODB_USERS_TABLE || 'devzone-users';
 const VERSIONS_TABLE = process.env.DYNAMODB_VERSIONS_TABLE || 'devzone-versions';
 const PLAYERS_TABLE = process.env.DYNAMODB_PLAYERS_TABLE || 'game-players';
 const MATCHMAKING_TABLE = process.env.DYNAMODB_MATCHMAKING_TABLE || 'game-matchmaking';
+const GAME_EVENTS_TABLE = process.env.DYNAMODB_GAME_EVENTS_TABLE || 'game-events';
 
 export async function getUserByEmail(email: string) {
   const res = await ddb.send(new ScanCommand({
@@ -192,6 +193,38 @@ export async function setMatchFound(playerIds: string[], matchId: string) {
       UpdateExpression: 'SET #s = :m, matchId = :mid',
       ExpressionAttributeNames: { '#s': 'status' },
       ExpressionAttributeValues: { ':m': 'matched', ':mid': matchId },
+    }));
+  }
+}
+
+// ================================================================
+// Telemetry Events (T707) — owned event ingestion for the Unity client
+// ================================================================
+
+export interface GameEventItem {
+  pk: string; // session#{sessionId}
+  sk: string; // {ts}#{uuid-suffix}
+  type: string;
+  ts: number;
+  sessionId: string;
+  props?: Record<string, unknown>;
+  playerId?: string;
+  clientVersion?: string;
+  schemaVersion?: number;
+  ttl: number;
+}
+
+const BATCH_WRITE_CHUNK_SIZE = 25; // DynamoDB BatchWriteItem hard limit
+
+export async function putGameEvents(items: GameEventItem[]): Promise<void> {
+  for (let i = 0; i < items.length; i += BATCH_WRITE_CHUNK_SIZE) {
+    const chunk = items.slice(i, i + BATCH_WRITE_CHUNK_SIZE);
+    await ddb.send(new BatchWriteCommand({
+      RequestItems: {
+        [GAME_EVENTS_TABLE]: chunk.map((item) => ({
+          PutRequest: { Item: item },
+        })),
+      },
     }));
   }
 }

@@ -46,6 +46,7 @@ Globals:
         DYNAMODB_MATCHMAKING_TABLE: !Ref MatchmakingTable
         DYNAMODB_MATCH_HISTORY_TABLE: !Ref MatchHistoryTable
         DYNAMODB_SEASONS_TABLE: !Ref SeasonsTable
+        DYNAMODB_GAME_EVENTS_TABLE: !Ref GameEventsTable
 
 Resources:
   GameDataBucket:
@@ -207,6 +208,25 @@ Resources:
         - AttributeName: seasonId
           KeyType: HASH
 
+  GameEventsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub game-events-${Environment}
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: pk
+          AttributeType: S
+        - AttributeName: sk
+          AttributeType: S
+      KeySchema:
+        - AttributeName: pk
+          KeyType: HASH
+        - AttributeName: sk
+          KeyType: RANGE
+      TimeToLiveSpecification:
+        AttributeName: ttl
+        Enabled: true
+
   DevZoneApi:
     Type: AWS::Serverless::Function
     Metadata:
@@ -230,6 +250,8 @@ Resources:
             TableName: !Ref MatchHistoryTable
         - DynamoDBCrudPolicy:
             TableName: !Ref SeasonsTable
+        - DynamoDBCrudPolicy:
+            TableName: !Ref GameEventsTable
         - Statement:
             - Effect: Allow
               Action:
